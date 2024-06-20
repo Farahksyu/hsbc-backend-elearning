@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class materials extends Model {
+  class Material extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,18 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-
-
-      materials.belongsTo(models.subbab, {
-        foreignKey: 'id_sub'
-      })
-
-      materials.hasMany(models.progres, {
-        foreignKey: 'id_materi'
-      })
     }
   }
-  materials.init({
+  Material.init({
     nama_materi: DataTypes.STRING,
     gold: DataTypes.INTEGER,
     exp: DataTypes.INTEGER,
@@ -30,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     id_sub: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'materials',
+    modelName: 'Material',
   });
-  return materials;
+  return Material;
 };

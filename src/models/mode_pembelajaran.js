@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class progres extends Model {
+  class Mode_Pembelajaran extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,23 +11,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-
-      progres.belongsTo(models.materials, {
-        foreignKey: 'id_materi'
-      })
-
-      progres.belongsTo(models.User, {
-        foreignKey: 'id_user'
-      })
     }
   }
-  progres.init({
-    id_materi: DataTypes.INTEGER,
-    id_user: DataTypes.INTEGER,
-    status: DataTypes.BOOLEAN
+  Mode_Pembelajaran.init({
+    nama_mode: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'progres',
+    modelName: 'Mode_Pembelajaran',
   });
-  return progres;
+  return Mode_Pembelajaran;
 };
