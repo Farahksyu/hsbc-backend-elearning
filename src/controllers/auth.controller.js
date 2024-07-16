@@ -29,13 +29,18 @@ const login = async (req, res, _next) => {
     if (!isPasswordValid) {
       console.log("Password salah");
       return res.status(401).send({
-          data: null,
-          message: "Password salah, coba lagi!",
+        data: null,
+        message: "Password salah, coba lagi!",
       });
     }
 
     const token = jwt.sign(
-      { id: user.id, fullname: user.fullname, username: user.username, email: user.email },
+      {
+        id: user.id,
+        fullname: user.fullname,
+        username: user.username,
+        email: user.email,
+      },
       process.env.JWT_SECRET
     );
 
@@ -90,8 +95,8 @@ const register = async (req, res, _next) => {
     });
   } catch (error) {
     return res.status(500).send({
-        data: null,
-        message: "Internal server error",
+      data: null,
+      message: "Internal server error",
     });
   }
 };
